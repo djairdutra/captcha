@@ -29,17 +29,17 @@ Uma classe PHP simples para gerar e verificar imagens CAPTCHA. Esta classe cria 
 
 Para gerar a imagem CAPTCHA e o formulário, chame o método estático `Gerar` dentro das tags `<form>`:
 
-    ```php
+    <?php
     require_once 'caminho/para/Captcha.php';
 
     Captcha::Gerar();
-    ```
+    ?>
 
 ### Conferindo o CAPTCHA
 
 Para conferir se o número é o mesmo da imagem, chame o método `Conferir` antes de carregar a página:
 
-    ```php
+    <?php
     require_once 'caminho/para/Captcha.php';
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -49,4 +49,4 @@ Para conferir se o número é o mesmo da imagem, chame o método `Conferir` ante
             echo "Falha na verificação do CAPTCHA. Tente novamente.";
         }
     }
-    ```
+    ?>
