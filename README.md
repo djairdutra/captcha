@@ -22,12 +22,13 @@ Uma classe PHP simples para gerar e verificar imagens CAPTCHA. Esta classe cria 
     ```php
     require_once 'caminho/para/Captcha.php';
     ```
+3. Crie sua "frase secreta" no arquivo `Captcha.php`.
 
 ## Uso
 
 ### Gerando o CAPTCHA
 
-Para gerar a imagem CAPTCHA e o formulário, chame o método estático `Gerar` dentro das tags `<form>`:
+Para gerar a imagem CAPTCHA e o formulário, chame o método estático `Gerar` dentro da tag `<form>`:
 
     <?php
     require_once 'caminho/para/Captcha.php';
