@@ -58,22 +58,39 @@ class Captcha{
         */
 
         try {
-            $imagem = imagecreate(100, 46);
-            $background_color = imagecolorallocate($imagem, 110, 110, 110);
+            # Gerando imagem base
+            $imagem = imagecreate(120, 46);
+            $background_color = imagecolorallocate($imagem, 130, 130, 130);
 
             for ($i = 0; $i < 200; $i++){
-                // Gerando cores aleatórias para cada linha aleatória
+                # Gerando cores aleatórias para cada linha aleatória
                 $cor_linha = imagecolorallocate($imagem, mt_rand(0, 255), mt_rand(0, 255), mt_rand(0, 255));
 
-                $x1 = mt_rand(-20, 230);
-                $x2 = mt_rand(-20, 230);
-                $y1 = mt_rand(-20, 230);
-                $y2 = mt_rand(-20, 230);
+                $x1 = mt_rand(-200, 230);
+                $x2 = mt_rand(-200, 230);
+                $y1 = mt_rand(-200, 230);
+                $y2 = mt_rand(-200, 230);
                 imageline($imagem, $x1, $y1, $x2, $y2, $cor_linha);
             }
 
-            $font_color = imagecolorallocate($imagem, 165, 165, 165);
-            imagettftext($imagem, 30, 0, 15, 40, $font_color, __DIR__ . "/FjallaOne-Regular.ttf", $numero);
+            $font_color = imagecolorallocate($imagem, 175, 175, 175);
+            $left = 10;
+
+            $font_list = array(
+                "FjallaOne-Regular.ttf",
+                "BreeSerif-Regular.ttf",
+                "DMSerifDisplay-Regular.ttf",
+                "PatuaOne-Regular.ttf"
+            );
+
+            # Escolhendo index de uma das fontes da lista
+            $font_name = $font_list[1];
+
+            # Gerando números desalinhados.
+            imagettftext($imagem, 26, rand(-20,20), ($left), rand(30,43), $font_color, __DIR__ . "/fonts/".$font_name, substr($numero,0,1));
+            imagettftext($imagem, 26, rand(-20,20), ($left+35), rand(30,43), $font_color, __DIR__ . "/fonts/".$font_name, substr($numero,1,1));
+            imagettftext($imagem, 26, rand(-20,20), ($left+60), rand(30,43), $font_color, __DIR__ . "/fonts/".$font_name, substr($numero,2,1));
+            imagettftext($imagem, 26, rand(-20,20), ($left+85), rand(30,43), $font_color, __DIR__ . "/fonts/".$font_name, substr($numero,3,1));
 
             ob_start();
             imagepng($imagem);
